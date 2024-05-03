@@ -20,6 +20,7 @@ class Router{
     {
       foreach($this->routes as $route){
         if($route["uri"]==$uri && $route["method"]==strtoupper($method)){
+          print_r($method);
           return require base_path($route["controller"]);
         }
       }
@@ -29,21 +30,21 @@ class Router{
     {
       $this->add("GET",$uri,$controller);
     }
-    public function post()
+    public function post($uri,$controller)
     {
       $this->add("POST",$uri,$controller);
     }
-    public function delete()
+    public function delete($uri,$controller)
     {
       $this->add("DELETE",$uri,$controller);
 
     }
-    public function put()
+    public function put($uri,$controller)
     {
       $this->add("PUT",$uri,$controller);
 
     }
-    public function patch()
+    public function patch($uri,$controller)
     {
       $this->add("PATCH",$uri,$controller);
 
