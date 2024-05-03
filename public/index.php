@@ -11,10 +11,11 @@ $router=new Router();
 $routes = require base_path("routes.php");
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $method="";
+print_r($POST);
 if(isset( $POST["_method"])){
   $method=$POST["_method"];
 }else{
-    $method=$_SERVER["REQUEST_METHOD"];
+  $method=$_SERVER["REQUEST_METHOD"];
 }
 $router->route($uri, $method);
 
