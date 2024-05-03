@@ -1,13 +1,21 @@
 <?php
-
+use Core\Router;
 const BASE_PATH = __DIR__.'/../';
-
-require BASE_PATH.'functions.php';
+require BASE_PATH.'Core/functions.php';
 
 spl_autoload_register(function ($class) {
-    require base_path("Core/" . $class . '.php');
+    $class=str_replace("\\","/",$class);
+    require base_path($class . '.php');
 });
-
-require base_path('router.php');
+$router=new Router();
+$routes = require base_path("routes.php");
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+$method="";
+if(isset( $POST["_method"])){
+  $method=$POST["_method"];
+}else{
+    $method=$_SERVER["REQUEST_METHOD"];
+}
+$router->route($uri, $method);
 
 
