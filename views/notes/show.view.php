@@ -9,6 +9,9 @@
         </p>
 
         <p><?= htmlspecialchars($note['body']) ?></p>
+        <a href="/note/edit?id=<?=$note["id"]?>" >
+            <button class="btn btn-info mb-2">Edit</button>
+        </a>
         <form action="" method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <input type="hidden" name="id" value="<?= $note["id"] ?>">
