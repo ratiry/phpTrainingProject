@@ -22,3 +22,7 @@ $router->patch("/note","controllers/notes/update.php");
 
 $router->get("/register","controllers/register/create.php")->only("guest");
 $router->post("/register","controllers/register/store.php");
+
+$router->get("/login","controllers/sessions/create.php")->only("guest");
+$router->post("/login","controllers/sessions/store.php");
+$router->delete("/logout","controllers/sessions/destroy.php")->only("auth");

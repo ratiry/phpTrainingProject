@@ -11,16 +11,16 @@ if($wasEmailUsed){
     header("location: /");
     die();
 }else{
-    $db->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, :name, :email, MD5(:password))",[
+    $db->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, :name, :email, :password)",[
+        "email"=>$email,
+        "password"=>password_hash( $password,PASSWORD_BCRYPT),
+        "name"=>$name
+    ]);
+    login([
         "email"=>$email,
         "password"=>$password,
         "name"=>$name
     ]);
-    $_SESSION["user"]=[
-        "email"=>$email,
-        "password"=>$password,
-        "name"=>$name
-    ];
     header("location: /");
     die();
 }

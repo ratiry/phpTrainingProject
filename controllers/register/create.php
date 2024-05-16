@@ -1,2 +1,4 @@
 <?php
-view("register/create.php");
+view("register/create.php",[
+    "heading"=>"Register"
+]);

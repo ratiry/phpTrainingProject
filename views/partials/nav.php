@@ -33,8 +33,13 @@
                                 <span class="sr-only">Open user menu</span>
                                 <?php if ($_SESSION["user"]?? false): ?>
                                         <p class="text-primary"><?=$_SESSION["user"]["name"]?></p>
+                                        <form action="/logout" method="POST">
+                                            <input type="hidden" value="DELETE" name="_method">
+                                            <button class="btn btn-secondary">logout</button>
+                                        </form>
                                 <?php else : ?>
                                     <a href="/register" class="btn btn-primary">Register</a>
+                                    <a href="/login" class="btn btn-secondary">Log in</a>
                                 <?php endif; ?>
                             </button>
                         </div>
