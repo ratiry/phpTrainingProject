@@ -1,5 +1,6 @@
 <?php
 namespace Core;
+use Core\Middleware\Middleware;
 class Router{
   protected $routes=[];
   private function add($method,$uri,$controller)
@@ -7,8 +8,10 @@ class Router{
     $this->routes[]=[
       "uri"=>$uri,
       "controller"=>$controller,
-      "method"=>$method      
+      "method"=>$method,
+      "middleware"=>NULL
     ];
+    return $this;
   }
   public function abort($code=404)
   {
@@ -20,6 +23,7 @@ class Router{
     {
       foreach($this->routes as $route){
         if($route["uri"]==$uri && $route["method"]==strtoupper($method)){
+          Middleware::resolve($route);
           return require base_path($route["controller"]);
         }
       }
@@ -50,7 +54,8 @@ class Router{
     }
     public function only($key)
     {
-
+     $this->routes[sizeof($this->routes)-1]["middleware"]=$key;
+     return $this;
     }
 }
 
