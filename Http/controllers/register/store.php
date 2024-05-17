@@ -8,8 +8,7 @@ $wasEmailUsed=$db->query("SELECT * FROM `users` WHERE `email` LIKE :email",[
     "email"=>$email
 ])->find();
 if($wasEmailUsed){
-    header("location: /");
-    die();
+    redirect("/");
 }else{
     $db->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, :name, :email, :password)",[
         "email"=>$email,
@@ -21,6 +20,5 @@ if($wasEmailUsed){
         "password"=>$password,
         "name"=>$name
     ]);
-    header("location: /");
-    die();
+    redirect("/");
 }

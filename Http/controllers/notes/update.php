@@ -18,8 +18,7 @@ if (empty($errors)) {
         'body' => $_POST['body'],
         'id' => $_POST["id"]
     ]);
-    header("location: /notes");
-    die();
+    redirect("/notes");
 }else{
     return view("notes/edit.view.php",[
         "heading"=>"Edit Note",
