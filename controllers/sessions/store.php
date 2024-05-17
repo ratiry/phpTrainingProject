@@ -10,7 +10,7 @@ if(password_verify($_POST["password"],$user["password"]) && $user){
     header("location: /");
     die();
 }else{
-    $errors["login"]=" If you're a person who misprinted their password/email , try again! "."<br>"."If you're a hacker or a bot, piss off!!";
+    $errors["login"]=" If you're a person who misprinted their password/email , try again! "."<br>"."If you're a hacker or a bot,  there's nothing to hack for you :(";
     view("sessions/create.view.php",[
         "errors"=>$errors
     ]);
