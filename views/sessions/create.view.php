@@ -14,6 +14,11 @@
         </div>
         <button type="submit" class="btn btn-primary">Log in</button>
         <p class="text-danger"><?=$errors["login"]?></p>
+        <?php if($errors["password"]!=NULL):?>
+            <p class="text-danger"><?=$errors["password"]?></p>
+            <img src="https://content.imageresizer.com/images/memes/SMELLING-YODA-meme-2.jpg" alt="">
+        <?php endif;?>
+
     </form>
     </div>
 </main>
