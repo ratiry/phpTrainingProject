@@ -1,6 +1,7 @@
 <?php
 session_start();
 use Core\Router;
+use Core\Session;
 const BASE_PATH = __DIR__.'/../';
 
 spl_autoload_register(function ($class) {
@@ -22,4 +23,5 @@ if(isset( $_POST["_method"])){
 }
 $router->route($uri, $method);
 
+Session::deleteFlash();
 
