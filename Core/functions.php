@@ -1,6 +1,7 @@
 <?php
 use Core\Response;
 use Core\Router;
+use Core\Session;
 function dd($value)
 {
     echo "<pre>";
@@ -32,4 +33,15 @@ function view($path, $attributes = [])
     extract($attributes);
 
     require base_path('views/' . $path);
+}
+function login($user){
+    $_SESSION["user"]=$user;
+    session_regenerate_id(true);
+}
+function logout(){
+    Session::destroy();
+}
+function redirect($path){
+    header("location: ".$path);
+    die();      
 }
