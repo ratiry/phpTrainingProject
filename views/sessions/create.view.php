@@ -1,12 +1,20 @@
 <?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/nav.php') ?>
 <?php require base_path('views/partials/banner.php') ?>
+<?php use Core\Session; ?>
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8" >
     <form method="POST" action="/login">
         <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" 
+            class="form-control" 
+            id="exampleInputEmail1" 
+            name="email" 
+            aria-describedby="emailHelp" 
+            placeholder="Enter email"
+            value="<?=old("email")?>"
+            >
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>

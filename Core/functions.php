@@ -2,6 +2,7 @@
 use Core\Response;
 use Core\Router;
 use Core\Session;
+
 function dd($value)
 {
     echo "<pre>";
@@ -44,4 +45,7 @@ function logout(){
 function redirect($path){
     header("location: ".$path);
     die();      
+}
+function old($key,$default=""){
+  return Session::get("old")[$key] ?? $default;
 }
