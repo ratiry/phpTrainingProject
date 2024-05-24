@@ -7,7 +7,7 @@ $db=App::resolve("Core\Database");
 $wasEmailUsed=$db->query("SELECT * FROM `users` WHERE `email` LIKE :email",[
     "email"=>$email
 ])->find();
-if($wasEmailUsed){
+if($wasEmailUsed  ){
     redirect("/");
 }else{
     $db->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, :name, :email, :password)",[

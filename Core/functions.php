@@ -1,6 +1,7 @@
 <?php
 use Core\Response;
 use Core\Router;
+use Core\Session;
 function dd($value)
 {
     echo "<pre>";
@@ -38,10 +39,7 @@ function login($user){
     session_regenerate_id(true);
 }
 function logout(){
-    $_SESSION=[];
-    session_destroy();
-    $params=session_get_cookie_params();
-    setcookie("PHPSESSID","",time()-3600,$params["path"],$params["domain"]);
+    Session::destroy();
 }
 function redirect($path){
     header("location: ".$path);
