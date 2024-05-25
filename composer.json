@@ -1,0 +1,17 @@
+{
+    "name": "evil/plotting",
+    "description": "destroy",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Thanos Smith"
+        }
+    ],
+    "require": {},
+    "autoload":{
+      "psr-4":{
+        "Core\\":"Core/",
+        "Http\\":"Http/"
+      }
+    }
+}
