@@ -16,7 +16,7 @@ if(!Validator::string($password,7,255)){
 if($wasEmailUsed){
     redirect("/");
 }
-$db->query("INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, :name, :email, :password)",[
+$db->query("INSERT INTO `users` (`id`, `email`, `name`, `password`) VALUES (NULL, :email, :name, :password);",[
     "email"=>$email,
     "password"=>password_hash( $password,PASSWORD_BCRYPT),
     "name"=>$name
