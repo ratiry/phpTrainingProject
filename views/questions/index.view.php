@@ -8,7 +8,6 @@
             <?php foreach ($questions as $question) : ?>
                     <a href="/question?id=<?= $question['id'] ?>" class="flex-col	flex border-1 border-indigo-600">
                         <h2><?= htmlspecialchars($question['title']) ?></h2> 
-                        <p><?= htmlspecialchars($question['body']) ?></p>
                         <div>
                           <p>
                             questioned by 
@@ -16,6 +15,7 @@
                               "user_id"=>$question["user_id"]
                               ])->find()["name"]?>
                             </p>
+                            <p><?= $question["rating"] ?></p>
                         </div>
                     </a>
             <?php endforeach; ?>

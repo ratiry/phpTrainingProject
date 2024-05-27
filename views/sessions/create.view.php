@@ -2,6 +2,7 @@
 <?php require base_path('views/partials/nav.php') ?>
 <?php require base_path('views/partials/banner.php') ?>
 <?php use Core\Session; ?>
+
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8" >
     <form method="POST" action="/login">
