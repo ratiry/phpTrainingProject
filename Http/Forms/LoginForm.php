@@ -6,7 +6,7 @@ use Core\Validator;
 use Core\ValidationException;
 
 class LoginForm{
-    protected $errors=[];
+    public $errors=[];
     public $attributes=[];
 
     public function __construct($attributes){

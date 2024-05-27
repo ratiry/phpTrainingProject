@@ -24,7 +24,9 @@ try{
   Session::addTemp("errors",$exception->errors);
   
   Session::addTemp("old",[
-    "email"=>$_POST["email"]
+    "email"=>$_POST["email"],
+    "title"=>$_POST["title"],
+    "body"=>$_POST["body"]
   ]);
   return redirect($router->previousUrl());
 }

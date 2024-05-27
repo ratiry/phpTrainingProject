@@ -30,6 +30,7 @@ $router->delete("/logout","sessions/destroy.php")->only("auth");
 $router->get("/questions","questions/index.php");
 
 $router->get("/question","questions/question/show.php");
-$router->post("/question","questions/question/create.php");
+$router->get("/question/create","questions/question/create.php")->only("auth");
+$router->post("/question","questions/question/store.php")->only("auth");
 $router->delete("/question","questions/question/destroy.php");
 
