@@ -26,3 +26,10 @@ $router->post("/register","register/store.php");
 $router->get("/login","sessions/create.php")->only("guest");
 $router->post("/login","sessions/store.php");
 $router->delete("/logout","sessions/destroy.php")->only("auth");
+
+$router->get("/questions","questions/index.php");
+
+$router->get("/question","questions/question/show.php");
+$router->post("/question","questions/question/create.php");
+$router->delete("/question","questions/question/destroy.php");
+

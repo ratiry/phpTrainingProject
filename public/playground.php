@@ -8,4 +8,3 @@ $numbers= new Collection([
  $numbers=$numbers->filter(function ($number){
   return $number>2;
 });
-var_dump($numbers);
