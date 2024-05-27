@@ -1,7 +1,8 @@
 <?php require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/nav.php') ?>
 <?php require base_path('views/partials/banner.php') ?>
-
+<?php use Core\App;?>
+<?php $db=App::resolve("Core\Database")?>
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -48,9 +49,12 @@
                         </div>
 
 
-
-
-
+                        <label for="category">category</label>
+                        <select name="category" id="category">
+                          <?php foreach($db->query("SELECT * FROM `Categories`")->get() as $category) :?>
+                              <option name="<?= $category["name"] ?>" value="<?= $category["name"] ?>"><?= $category["name"] ?></option>
+                            <?php endforeach;?>                      
+                        </select>          
                         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
                             <button
                                 type="submit"
