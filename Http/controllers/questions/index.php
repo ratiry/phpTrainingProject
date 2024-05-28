@@ -13,6 +13,6 @@ view("questions/index.view.php",[
   "heading"=>"questions",
   "db"=>$db,
   "questions"=>$questions,
-  "id"=>Session::get("user")["id"]
+  "id"=>Session::get("user")["id"],
 ]
 );
