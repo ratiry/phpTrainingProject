@@ -12,15 +12,19 @@
           <span>asked by <?=$user_name ?></span>
           <form class="m-[10px] flex flex-col" method="POST" action="/rating">
             <input type="hidden" name="_method" value="PATCH">
-            <button name="plus">
+            <input type="hidden" name="question_id" value="<?= $question["id"]?>">
+            <button name="opinion" value="plus">
               <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
             </button>
-            <span><?= $question["rating"] ?></span>
-            <button name="minus">
+            <span class="text-center"><?= $question["rating"] ?></span>
+            <button name="opinion" value="minus">
               <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg>
             </button>
           </form>
         </div>
+      </div>
+      <div class="bg-stone-100	mt-[20px] p-4 w-full">
+        <p ><?= $question["body"]?></p>
       </div>
     </div>
 </main>
