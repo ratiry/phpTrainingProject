@@ -12,6 +12,7 @@ $questions=$db->query("SELECT * FROM `questions` $sortFilter")->get();
 view("questions/index.view.php",[
   "heading"=>"questions",
   "db"=>$db,
-  "questions"=>$questions
+  "questions"=>$questions,
+  "id"=>Session::get("user")["id"]
 ]
 );
