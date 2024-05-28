@@ -51,7 +51,7 @@
 
                         <label for="category">category</label>
                         <select name="category" id="category">
-                          <?php foreach($db->query("SELECT * FROM `Categories`")->get() as $category) :?>
+                          <?php foreach($db->query("SELECT * FROM `category`")->get() as $category) :?>
                               <option name="<?= $category["name"] ?>" value="<?= $category["name"] ?>"><?= $category["name"] ?></option>
                             <?php endforeach;?>                      
                         </select>          

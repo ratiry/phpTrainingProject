@@ -1,27 +1,17 @@
 {
-    "name": "evil/plotting",
-    "description": "destroy",
+    "name": "mence/evil",
+    "description": "ruin",
     "type": "project",
     "authors": [
         {
-            "name": "Thanos Smith"
+            "name": "Mr Smith"
         }
     ],
-    "require": {
-        "illuminate/collections": "^8.83"
-    },
+    "require": {},
     "autoload":{
-      "psr-4":{
-        "Core\\":"Core/",
-        "Http\\":"Http/"
-      }
-    },
-    "require-dev": {
-        "pestphp/pest": "^1.23"
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
+        "psr-4":{
+            "Core\\":"Core/",
+            "Http\\":"Http/"
         }
     }
 }

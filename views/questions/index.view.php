@@ -15,7 +15,7 @@
             </select>
             filter by <select name="filter" id="">
                <option value=""></option>
-              <?php foreach($db->query("SELECT * FROM `Categories`")->get() as $category) :?>
+              <?php foreach($db->query("SELECT * FROM `category`")->get() as $category) :?>
                
                 <option value="<?= $category["name"] ?>"><?= $category["name"] ?></option>
               <?php endforeach;?>                      
