@@ -21,9 +21,13 @@ $db->query("INSERT INTO `users` (`id`, `email`, `name`, `password`) VALUES (NULL
     "password"=>password_hash( $password,PASSWORD_BCRYPT),
     "name"=>$name
 ]);
+$id=$db->query("SELECT * FROM `users` WHERE `email` LIKE :email",[
+  "email"=>$email
+])->find()["id"];
 login([
     "email"=>$email,
     "password"=>$password,
-    "name"=>$name
+    "name"=>$name,
+    "id"=>$id
 ]);
 redirect("/");
