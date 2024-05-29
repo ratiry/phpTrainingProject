@@ -12,9 +12,13 @@ class EditRating{
     public function edit(){
         if($this->attributes["oldOpinion"]==NULL){
             $this->forTheFirstTime();
-        }
-        if($this->attributes["newOpinion"]==$this->attributes["oldOpinion"]){
-            $this->cancelOpinion();
+        }else{
+            if($this->attributes["newOpinion"]==$this->attributes["oldOpinion"]){
+                $this->cancelOpinion();
+            }else{
+                $this->ChangeOpinion();
+
+            }
         }
     }
     private function forTheFirstTime(){
@@ -38,7 +42,6 @@ class EditRating{
             "question_id"=>$this->attributes["question_id"],
             "opinion"=>$_POST["opinion"]
         ]);
-        redirect("/question?id=".$this->attributes['question_id']);
     }
     private function cancelOpinion(){
         $this->attributes['db']->query("DELETE FROM $this->ratingActions WHERE user_id=:user_id AND question_id=:question_id",[
@@ -60,7 +63,6 @@ class EditRating{
                     "id"=>$this->attributes["question_id"]
                 ]);
         }
-        redirect("/question?id=".$this->attributes['question_id']);
     }
     private function ChangeOpinion(){
         switch($this->attributes["newOpinion"]){
@@ -84,6 +86,5 @@ class EditRating{
                     "id"=>$this->attributes["question_id"]
                 ]);
         }
-        redirect("/question?id=".$this->attributes['question_id']);
     }
 }
