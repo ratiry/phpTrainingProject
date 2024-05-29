@@ -84,5 +84,6 @@ class EditRating{
                     "id"=>$this->attributes["question_id"]
                 ]);
         }
+        redirect("/question?id=".$this->attributes['question_id']);
     }
 }
