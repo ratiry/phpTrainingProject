@@ -34,5 +34,7 @@ $router->get("/question/create","questions/question/create.php")->only("auth");
 $router->post("/question","questions/question/store.php")->only("auth");
 $router->delete("/question","questions/question/destroy.php");
 
-$router->patch("/rating","questions/rating/edit.php");
+$router->patch("/question/rating","questions/rating/editQuestionRating.php");
+$router->patch("/answer/rating","questions/rating/editAnswerRating.php");
 
+$router->post("/answer","questions/answer/store.php");

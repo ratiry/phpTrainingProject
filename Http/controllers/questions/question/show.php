@@ -10,9 +10,15 @@ $opinion=$db->query("SELECT * FROM `ratingActions` WHERE `user_id` = :user_id AN
   "user_id"=>Session::get("user")["id"],
   "question_id"=>$question["id"]
 ])->find()["opinion"];
+$answers=$db->query("SELECT * FROM `answers` WHERE `question_id` = :question_id",[
+  "question_id"=>$question["id"]
+])->get();
 view("/questions/question/show.view.php",[
   "heading"=>"question",
   "question"=>$question,
   "user_name"=>$user_name,
-  "opinion"=>$opinion
+  "opinion"=>$opinion,
+  "user_id"=>Session::get("user")["id"],
+  "errors"=>Session::get("errors"),
+  "answers"=>$answers
 ]);

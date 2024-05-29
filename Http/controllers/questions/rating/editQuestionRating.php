@@ -5,7 +5,6 @@ use Http\EditRating;
 $db=App::resolve("Core\Database");
 $auth= Session::get("user")["id"];
 $question_id=$_POST["question_id"];
-
 if($auth==NULL){
     redirect("/question?id=$question_id");
 } 
