@@ -62,4 +62,27 @@ class EditRating{
         }
         redirect("/question?id=".$this->attributes['question_id']);
     }
+    private function ChangeOpinion(){
+        switch($this->attributes["newOpinion"]){
+            case "plus":
+                $this->attributes["db"]->query("UPDATE $this->ratingActions SET `opinion` = 'plus' WHERE $this->ratingActions.`user_id` = :user_id AND $this->ratingActions.`question_id` =:question_id",[
+                    "user_id"=>$this->attributes["user_id"],
+                    "question_id"=>$this->attributes["question_id"],
+                ]);
+                $this->attributes["db"]->query("UPDATE $this->itemsTable SET `rating` = :new_rating WHERE $this->itemsTable.`id` = :id",[
+                    "new_rating"=>($this->attributes["oldRating"]+2),
+                    "id"=>$this->attributes["question_id"]
+                ]);
+                break;
+            case "minus":
+                $this->attributes["db"]->query("UPDATE $this->ratingActions SET `opinion` = 'minus' WHERE $this->ratingActions.`user_id` = :user_id AND $this->ratingActions.`question_id` =:question_id",[
+                    "user_id"=>$this->attributes["user_id"],
+                    "question_id"=>$this->attributes["question_id"],
+                ]);
+                $this->attributes["db"]->query("UPDATE $this->itemsTable SET `rating` = :new_rating WHERE $this->itemsTable.`id` = :id",[
+                    "new_rating"=>($this->attributes["oldRating"]-2),
+                    "id"=>$this->attributes["question_id"]
+                ]);
+        }
+    }
 }
