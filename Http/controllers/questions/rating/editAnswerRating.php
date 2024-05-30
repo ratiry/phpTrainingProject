@@ -2,9 +2,11 @@
 use Core\App;
 use Core\Session;
 use Http\EditRating;
+
 $db=App::resolve("Core\Database");
 $auth= Session::get("user")["id"];
 $answer_id=$_POST["answer_id"];
+$question_id=$_POST["question_id"];
 if($auth==NULL){
     redirect("/answer?id=$answer_id");
 } 
@@ -24,7 +26,7 @@ $edit=new editRating([
     "oldRating"=>$oldRating,
     "ratingActions"=>"ratingAnswersActions",
     "user_id"=>Session::get("user")["id"],
-    "item"=>"answer"
+    "item_id"=>"answer_id"
 ]);
 $edit->edit();
-redirect("/answer?id=$answer_id");
+redirect("/question?id=$question_id");
