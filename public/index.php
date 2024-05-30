@@ -22,6 +22,7 @@ try{
   $router->route($uri, $method);
 }catch(ValidationException $exception){
   Session::addTemp("errors",$exception->errors);
+  // dd("hjj");
   Session::addTemp("old",[
     "email"=>$_POST["email"],
     "title"=>$_POST["title"],
