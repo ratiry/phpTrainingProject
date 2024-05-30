@@ -8,7 +8,7 @@ $question_id=$_POST["question_id"];
 if($auth==NULL){
     redirect("/question?id=$question_id");
 } 
-$opinion=$db->query("SELECT * FROM `ratingActions` WHERE `user_id` = :user_id AND `question_id` = :question_id",[
+$opinion=$db->query("SELECT * FROM `ratingQuestionsActions` WHERE `user_id` = :user_id AND `question_id` = :question_id",[
     "user_id"=>Session::get("user")["id"],
     "question_id"=>$question_id
 ])->find()["opinion"];
@@ -22,8 +22,9 @@ $edit=new editRating([
     "itemsTable"=>"questions",
     "question_id"=>$question_id,
     "oldRating"=>$oldRating,
-    "ratingActions"=>"ratingActions",
+    "ratingActions"=>"ratingQuestionsActions",
     "user_id"=>Session::get("user")["id"],
+    "item"=>"question"
 ]);
 $edit->edit();
 redirect("/question?id=$question_id");
