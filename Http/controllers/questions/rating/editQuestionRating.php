@@ -24,7 +24,7 @@ $edit=new editRating([
     "oldRating"=>$oldRating,
     "ratingActions"=>"ratingQuestionsActions",
     "user_id"=>Session::get("user")["id"],
-    "item"=>"question"
+    "item_id"=>"question_id"
 ]);
 $edit->edit();
 redirect("/question?id=$question_id");
