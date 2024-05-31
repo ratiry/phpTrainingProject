@@ -8,7 +8,7 @@ $auth= Session::get("user")["id"];
 $answer_id=$_POST["answer_id"];
 $question_id=$_POST["question_id"];
 if($auth==NULL){
-    redirect("/answer?id=$answer_id");
+    redirect("/question?id=$question_id");
 } 
 $opinion=$db->query("SELECT * FROM `ratingAnswersActions` WHERE `user_id` = :user_id AND `answer_id` = :answer_id",[
     "user_id"=>Session::get("user")["id"],

@@ -15,7 +15,16 @@ $answers=$db->query("SELECT * FROM `answers` WHERE `question_id` = :question_id"
   "question_id"=>$question["id"]
 ])->get();
 $userAlreadyAnswered=False;
+$usersAnswersOpinions=[];
+$authorsOfAnswers=[];
 foreach($answers as $answer){
+  $authorsOfAnswers[]=$db->query("SELECT * FROM `users` WHERE `id` = :user_id  " ,[
+  "user_id"=>$answer["user_id"]
+])->get();
+  $usersAnswersOpinions[]=$db->query("SELECT `opinion` FROM `ratingAnswersActions` WHERE `user_id` = :user_id AND `answer_id` = :answer_id",[
+    "user_id"=>$user_id,
+    "answer_id"=>$answer["id"]
+  ])->find();
   if($answer["user_id"]==$user_id){
     $userAlreadyAnswered=True;
     break;
@@ -29,5 +38,7 @@ view("/questions/question/show.view.php",[
   "user_id"=>$user_id,
   "errors"=>Session::get("errors"),
   "answers"=>$answers,
-  "userAlreadyAnswered"=>$userAlreadyAnswered
+  "userAlreadyAnswered"=>$userAlreadyAnswered,
+  "usersAnswersOpinions"=>$usersAnswersOpinions,
+  "authorsOfAnswers"=>$authorsOfAnswers
 ]);
