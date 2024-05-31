@@ -15,12 +15,12 @@
             </select>
             filter by <select name="filter" id="">
                <option value=""></option>
-              <?php foreach($db->query("SELECT * FROM `category`")->get() as $category) :?>
+              <?php foreach($db->query("SELECT * FROM `Categories`")->get() as $category) :?>
                
                 <option value="<?= $category["name"] ?>"><?= $category["name"] ?></option>
               <?php endforeach;?>                      
               <option value="my_questions">my questions</option>
-              
+              <option value="unAnswered">Unanswered questions</option>
             </select>
           </div> 
           <button class="btn btn-primary">`Apply</button>

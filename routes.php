@@ -28,14 +28,15 @@ $router->post("/login","sessions/store.php");
 $router->delete("/logout","sessions/destroy.php")->only("auth");
 
 $router->get("/questions","questions/index.php");
+$router->get("/unAnswered","questions/unAnswered.php");
 
 $router->get("/question","questions/question/show.php");
 $router->get("/question/create","questions/question/create.php")->only("auth");
 $router->post("/question","questions/question/store.php")->only("auth");
-$router->delete("/question","questions/question/destroy.php");
+$router->delete("/question","questions/question/destroy.php")->only("auth");
 
-$router->patch("/question/rating","questions/rating/editQuestionRating.php");
-$router->patch("/answer/rating","questions/rating/editAnswerRating.php");
+$router->patch("/question/rating","questions/rating/editQuestionRating.php")->only("auth");
+$router->patch("/answer/rating","questions/rating/editAnswerRating.php")->only("auth");
 
 $router->post("/answer","questions/answer/store.php")->only("auth");
 $router->delete("/answer","questions/answer/destroy.php")->only("auth");

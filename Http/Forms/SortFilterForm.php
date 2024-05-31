@@ -15,12 +15,18 @@ class SortFilterForm{
 
   }
   private function filter($filter,$id){
-    if($filter=="my_questions"){
-       return "WHERE id=$id";
-    }else if($filter!=""){
-      return "WHERE category LIKE '$filter'";
-    }else{
+    if($filter===""){
       return "";
+    }
+    switch($filter){
+      case "unAnswered":
+        return redirect("/unAnswered");
+        break;
+      case "my_questions":
+        return "WHERE id=$id";
+        break;
+      default:
+        return "WHERE category LIKE '$filter'";
     }
   }
   public function __construct($filter,$sort,$id){
