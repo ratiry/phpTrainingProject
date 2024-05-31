@@ -25,6 +25,8 @@ class SortFilterForm{
       case "my_questions":
         return "WHERE id=$id";
         break;
+      case "questionsAnsweredByUser":
+        return redirect("/questionsAnsweredByUser");
       default:
         return "WHERE category LIKE '$filter'";
     }

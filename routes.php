@@ -29,6 +29,7 @@ $router->delete("/logout","sessions/destroy.php")->only("auth");
 
 $router->get("/questions","questions/index.php");
 $router->get("/unAnswered","questions/unAnswered.php");
+$router->get("/questionsAnsweredByUser","questions/questionsAnsweredByUser.php");
 
 $router->get("/question","questions/question/show.php");
 $router->get("/question/create","questions/question/create.php")->only("auth");

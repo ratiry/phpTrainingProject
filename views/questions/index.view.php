@@ -21,6 +21,7 @@
               <?php endforeach;?>                      
               <option value="my_questions">my questions</option>
               <option value="unAnswered">Unanswered questions</option>
+              <option value="questionsAnsweredByUser">I answered</option>
             </select>
           </div> 
           <button class="btn btn-primary">`Apply</button>
