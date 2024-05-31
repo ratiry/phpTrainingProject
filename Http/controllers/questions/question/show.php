@@ -1,8 +1,10 @@
 <?php
 use Core\App;
 use Core\Session;
+use Http\Forms\SortFilterForm;
 $db=App::resolve("Core\Database");
 $user_id=Session::get("user")["id"];
+$sort="";
 $question=$db->query('select * from questions where id = :id', [
   'id' => $_GET['id']])->findOrFail();
 $user_name=$db->query('select * from users where id = :id', [
@@ -11,7 +13,10 @@ $opinion=$db->query("SELECT * FROM `ratingQuestionsActions` WHERE `user_id` = :u
   "user_id"=>$user_id,
   "question_id"=>$question["id"]
 ])->find()["opinion"];
-$answers=$db->query("SELECT * FROM `answers` WHERE `question_id` = :question_id",[
+if($_GET["sort"]!=NULL){
+  $sort=SortFilterForm::compile("",$_GET["sort"],999);
+}
+$answers=$db->query("SELECT * FROM `answers` WHERE `question_id` = :question_id $sort",[
   "question_id"=>$question["id"]
 ])->get();
 $userAlreadyAnswered=False;

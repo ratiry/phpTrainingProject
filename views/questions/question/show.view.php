@@ -38,6 +38,19 @@
       <?php if( sizeof($answers)==0):?>
         <p>No answers here</p>
       <?php endif;?>
+      <?php if( sizeof($answers)!=0):?>
+        <form action="/question" class="mb-5 flex justify-between">
+            <div>
+              sort by <select  name="sort" id="">
+                <option  value=""></option>
+                <option value="rating_ascending">rating ascending</option>
+                <option value="rating_descending">rating descending</option>
+              </select>
+            </div> 
+            <input type="hidden" name="id" value="<?=$question["id"]?>">
+            <button class="btn btn-primary">Apply</button>
+        </form>
+      <?php endif;?>
       <?php foreach($answers as $key=>$value) : ?>
         <div class="bg-red-50 w-full p-4 flex justify-between mb-[20px]">
           <div>
