@@ -4,7 +4,7 @@ use Core\Session;
 use Http\Forms\SortFilterForm;
 $db=App::resolve("Core\Database");
 $user_id=Session::get("user")["id"];
-$sort="";
+$sortFilter="";
 $question=$db->query('select * from questions where id = :id', [
   'id' => $_GET['id']])->findOrFail();
 $user_name=$db->query('select * from users where id = :id', [
@@ -13,12 +13,14 @@ $opinion=$db->query("SELECT * FROM `ratingQuestionsActions` WHERE `user_id` = :u
   "user_id"=>$user_id,
   "question_id"=>$question["id"]
 ])->find()["opinion"];
-if($_GET["sort"]!=NULL){
-  $sort=SortFilterForm::compile("",$_GET["sort"],999);
+if($_GET["sort"]!=NULL || $_GET["filter"]!=NULL){
+  $sortFilter=SortFilterForm::compile($_GET["filter"],$_GET["sort"],$user_id);
 }
-$answers=$db->query("SELECT * FROM `answers` WHERE `question_id` = :question_id $sort",[
+$answers=$db->query("SELECT * FROM `answers` WHERE `question_id` = :question_id $sortFilter",[
   "question_id"=>$question["id"]
 ])->get();
+
+
 $userAlreadyAnswered=False;
 $usersAnswersOpinions=[];
 $authorsOfAnswers=[];

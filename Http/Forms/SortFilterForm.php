@@ -21,10 +21,10 @@ class SortFilterForm{
     switch($filter){
       case "unAnswered":
         return redirect("/unAnswered");
-        break;
       case "my_questions":
         return "WHERE id=$id";
-        break;
+      case "my_answers":
+        return "AND user_id=$id";
       case "questionsAnsweredByUser":
         return redirect("/questionsAnsweredByUser");
       default:
@@ -35,7 +35,7 @@ class SortFilterForm{
     $this->sorted=$this->sort($sort);
     $this->filtered=$this->filter($filter,$id);
   }
-  public static function compile($filter,$sort,$id){
+  public static function compile($filter,$sort,$id){    
     $instance=new static($filter,$sort,$id);
     if($instance->sorted!="" && $instance->filtered==""){
       return $instance->sorted;

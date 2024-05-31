@@ -46,6 +46,11 @@
                 <option value="rating_ascending">rating ascending</option>
                 <option value="rating_descending">rating descending</option>
               </select>
+              filter by <select  name="filter" id="">
+                <option  value=""></option>
+                <option value="my_answers">my answers</option>
+              </select>
+                            
             </div> 
             <input type="hidden" name="id" value="<?=$question["id"]?>">
             <button class="btn btn-primary">Apply</button>
